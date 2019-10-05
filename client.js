@@ -21,13 +21,8 @@ function addEmployee() {
                         <td class="salary">${annualSalary}</td>
                         <td><button type="button" class="deleteButton">Delete</button></td></tr>`;
     $('tbody').append(employee);
-    totalSalary += Number(annualSalary);
-    let monthlyCost = totalSalary / 12;
-    if (monthlyCost > 20000) {
-        $('#cash').text(`$${monthlyCost.toFixed(2)}`).css('color', 'red');
-    } else {
-        $('#cash').text(`$${monthlyCost.toFixed(2)}`);
-    }
+    
+    monthlyCalculator(annualSalary);
     
     $('#firstName').val('');
     $('#lastName').val('');
@@ -39,4 +34,14 @@ function addEmployee() {
 
 function deleteEmployee() {
     $(this).closest('tr').remove();
+}
+
+function monthlyCalculator(cash) {
+    totalSalary += Number(cash);
+    let monthlyCost = totalSalary / 12;
+    if (monthlyCost > 20000) {
+        $('#cash').text(`$${monthlyCost.toFixed(2)}`).css('color', 'red');
+    } else {
+        $('#cash').text(`$${monthlyCost.toFixed(2)}`);
+    }
 }
