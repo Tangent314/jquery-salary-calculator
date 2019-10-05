@@ -1,10 +1,11 @@
 let totalSalary = 0;
 
+
 $(document).ready(onReady);
 
 function onReady() {
     $('#submitButton').on('click', addEmployee);
-    $('tbody').on('click','.deleteButton', deleteEmployee)
+    $('tbody').on('click', '.deleteButton', deleteEmployee)
 }
 
 function addEmployee() {
@@ -17,10 +18,25 @@ function addEmployee() {
                         <td>${lastName}</td>
                         <td>${id}</td>
                         <td>${title}</td>
-                        <td>${annualSalary}</td>
+                        <td class="salary">${annualSalary}</td>
                         <td><button type="button" class="deleteButton">Delete</button></td></tr>`;
     $('tbody').append(employee);
     totalSalary += Number(annualSalary);
-    let monthlyCost = totalSalary/12;
-    $('#cash').text(monthlyCost.toFixed(2));
+    let monthlyCost = totalSalary / 12;
+    if (monthlyCost > 20000) {
+        $('#cash').text(`$${monthlyCost.toFixed(2)}`).css('color', 'red');
+    } else {
+        $('#cash').text(`$${monthlyCost.toFixed(2)}`);
+    }
+    
+    $('#firstName').val('');
+    $('#lastName').val('');
+    $('#id').val('');
+    $('#title').val('');
+    $('#annualSalary').val('');
+
+}
+
+function deleteEmployee() {
+    $(this).closest('tr').remove();
 }
