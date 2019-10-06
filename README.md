@@ -1,7 +1,3 @@
-# Project Name
-
-[Project Instructions](./INSTRUCTIONS.md), this line may be removed once you have updated the README.md
-
 ## Description
 
 Our office needed a way to calculate everyone's annual salary and then break down how much the company has to pay monthly cover every employee's paychecks.
