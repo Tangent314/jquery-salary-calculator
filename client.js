@@ -1,6 +1,5 @@
 let totalSalary = 0; // lines 1-3 are global variables
 let monthlyCost;
-let annualSalary;
 
 
 $(document).ready(onReady);
@@ -15,7 +14,7 @@ function addEmployee() { // adds employee info
     const lastName = $('#lastName').val();
     const id = $('#id').val();
     const title = $('#title').val();
-    annualSalary = $('#annualSalary').val();
+    let annualSalary = $('#annualSalary').val();
     let employee = `<tr><td>${firstName}</td>
                         <td>${lastName}</td>
                         <td>${id}</td>
