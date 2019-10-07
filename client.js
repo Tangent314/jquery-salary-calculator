@@ -23,7 +23,6 @@ function addEmployee() { // reads the input values employee information
                         <td><button type="button" class="deleteButton">Delete</button></td></tr>`;
     $('tbody').append(employee);
 
-    salaries.push(annualSalary);
 
     monthlyCalculator(annualSalary);
 
