@@ -1,4 +1,4 @@
-let totalSalary = 0;
+let totalSalary = 0; // lines 1-3 are global variables
 let monthlyCost;
 let annualSalary;
 
@@ -10,7 +10,7 @@ function onReady() {
     $('tbody').on('click', '.deleteButton', deleteEmployee)
 }
 
-function addEmployee() {
+function addEmployee() { // adds employee info
     const firstName = $('#firstName').val();
     const lastName = $('#lastName').val();
     const id = $('#id').val();
@@ -34,7 +34,7 @@ function addEmployee() {
 
 }
 
-function monthlyCalculator(cash) {
+function monthlyCalculator(cash) { // calculates monthly cost
     totalSalary += Number(cash);
     monthlyCost = totalSalary / 12;
     if (monthlyCost > 20000) {
@@ -44,7 +44,7 @@ function monthlyCalculator(cash) {
     }
 }
 
-function deleteEmployee() {
+function deleteEmployee() { // deletes employee data and recalculates total monthly cost 
     totalSalary - Number($(this).closest('td').prev().html());
     monthlyCost -= Number($(this).closest('td').prev().html())/12;
     totalSalary -= Number($(this).closest('td').prev().html());
