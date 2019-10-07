@@ -1,20 +1,21 @@
 let totalSalary = 0;
-
+let monthlyCost;
+let annualSalary;
 
 
 $(document).ready(onReady);
 
-function onReady() { // performs addEmployee and deleteEmployee functions when submit and delete is clicked respectively
+function onReady() {
     $('#submitButton').on('click', addEmployee);
     $('tbody').on('click', '.deleteButton', deleteEmployee)
 }
 
-function addEmployee() { // reads the input values employee information
+function addEmployee() {
     const firstName = $('#firstName').val();
     const lastName = $('#lastName').val();
     const id = $('#id').val();
     const title = $('#title').val();
-    let annualSalary = $('#annualSalary').val();
+    annualSalary = $('#annualSalary').val();
     let employee = `<tr><td>${firstName}</td>
                         <td>${lastName}</td>
                         <td>${id}</td>
@@ -22,10 +23,9 @@ function addEmployee() { // reads the input values employee information
                         <td class="salary">${annualSalary}</td>
                         <td><button type="button" class="deleteButton">Delete</button></td></tr>`;
     $('tbody').append(employee);
-
-
+    
     monthlyCalculator(annualSalary);
-
+    
     $('#firstName').val('');
     $('#lastName').val('');
     $('#id').val('');
@@ -34,7 +34,7 @@ function addEmployee() { // reads the input values employee information
 
 }
 
-function monthlyCalculator(cash) { // calculates monthly cost
+function monthlyCalculator(cash) {
     totalSalary += Number(cash);
     monthlyCost = totalSalary / 12;
     if (monthlyCost > 20000) {
@@ -45,7 +45,11 @@ function monthlyCalculator(cash) { // calculates monthly cost
 }
 
 function deleteEmployee() {
+    totalSalary - Number($(this).closest('td').prev().html());
+    monthlyCost -= Number($(this).closest('td').prev().html())/12;
+    totalSalary -= Number($(this).closest('td').prev().html());
+    $("body").data("test", {first:  '$' + monthlyCost.toFixed(2)});
+    $("#cash").text($("body").data("test").first);
     $(this).closest('tr').remove();
 }
-
 
