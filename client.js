@@ -47,8 +47,8 @@ function deleteEmployee() { // deletes employee data and recalculates total mont
     totalSalary - Number($(this).closest('td').prev().html());
     monthlyCost -= Number($(this).closest('td').prev().html())/12;
     totalSalary -= Number($(this).closest('td').prev().html());
-    $("body").data("test", {first:  '$' + monthlyCost.toFixed(2)});
-    $("#cash").text($("body").data("test").first);
+    $("body").data("delete", {calculate:  '$' + monthlyCost.toFixed(2)});
+    $("#cash").text($("body").data("delete").calculate);
     $(this).closest('tr').remove();
 }
 
